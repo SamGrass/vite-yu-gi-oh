@@ -7,7 +7,9 @@ import axios from 'axios';
 
 export default {
     name: 'CardListApp',
-
+    components: {
+        CardsApp
+    },
     data() {
         return {
             store,
@@ -39,6 +41,8 @@ export default {
 
                 <div class="cards-container">
                     <!-- componente CardsApp da aggiungere -->
+                    <CardsApp v-for="(card, index) in store.cardList" :key="index"
+                        :image="card.card_images.image_url_small" :cardName="card.name" :type="card.archetype" />
                 </div>
             </div>
         </div>
@@ -68,7 +72,7 @@ main {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1rem;
 
         }
     }
