@@ -1,8 +1,30 @@
 <script>
 import CardsApp from './CardsApp.vue'
+// import store managment 
+import { store } from '../store.js'
+// import axios
+import axios from 'axios';
 
 export default {
-    name: 'CardListApp'
+    name: 'CardListApp',
+
+    data() {
+        return {
+            store,
+        }
+    },
+    methods: {
+        getCards() {
+            axios.get(store.apiUrl).then(res => {
+                console.log(res.data.data);
+                store.cardList = res.data.data;
+            })
+
+        }
+    },
+    created() {
+        this.getCards();
+    },
 }
 </script>
 
