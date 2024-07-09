@@ -2,13 +2,13 @@
 import CardsApp from './CardsApp.vue'
 
 export default {
-    name: CardListApp
+    name: 'CardListApp'
 }
 </script>
 
 <template>
     <div>
-
+        adawda
     </div>
 </template>
 

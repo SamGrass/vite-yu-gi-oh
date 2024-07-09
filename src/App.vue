@@ -11,6 +11,11 @@ export default {
 </script>
 
 <template>
+  <HeaderApp />
+  <main>
+    <CardListApp />
+  </main>
+
 
 
 </template>

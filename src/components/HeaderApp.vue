@@ -1,12 +1,12 @@
 <script>
 export default {
-    name: HeaderApp
+    name: 'HeaderApp'
 }
 </script>
 
 <template>
     <div>
-
+        adadfggg
     </div>
 </template>
 

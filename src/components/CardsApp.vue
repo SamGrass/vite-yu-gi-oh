@@ -1,12 +1,11 @@
 <script>
 export default {
-    name: CardsApp
+    name: 'CardsApp'
 }
 </script>
 
 <template>
     <div>
-
     </div>
 </template>
 
