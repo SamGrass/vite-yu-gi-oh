@@ -1,20 +1,16 @@
 <script>
 export default {
     name: 'CardsApp',
-    props: {
-        image: String,
-        cardName: String,
-        type: String
-    }
+    props: ['info']
 }
 </script>
 
 <template>
     <div class="card">
-        <img :src="image" :alt="cardName">
+        <img :src="info.card_images[0].image_url_small" :alt="info.name">
         <div class="txt-card-container">
-            <h4>{{ cardName }}</h4>
-            <div>{{ type }}</div>
+            <h4>{{ info.name }}</h4>
+            <div>{{ info.archetype }}</div>
         </div>
     </div>
 </template>
@@ -25,9 +21,15 @@ export default {
 .card {
     flex-basis: calc(100% / 5 - 1rem);
 
+    img {
+        display: block;
+    }
+
     .txt-card-container {
-        padding: 0.7rem;
+        padding: 1rem;
         background-color: $primary;
+        min-height: 6rem;
+        
 
         h4 {
             color: #fff;

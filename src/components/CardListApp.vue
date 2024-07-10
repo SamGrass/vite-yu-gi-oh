@@ -20,6 +20,7 @@ export default {
             axios.get(store.apiUrl).then(res => {
                 console.log(res.data.data);
                 store.cardList = res.data.data;
+
             })
 
         }
@@ -41,8 +42,7 @@ export default {
 
                 <div class="cards-container">
                     <!-- componente CardsApp da aggiungere -->
-                    <CardsApp v-for="(card, index) in store.cardList" :key="index"
-                        :image="card.card_images.image_url_small" :cardName="card.name" :type="card.archetype" />
+                    <CardsApp v-for="(card, index) in store.cardList" :key="index" :info="card"/>
                 </div>
             </div>
         </div>
