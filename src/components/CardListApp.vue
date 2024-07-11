@@ -1,14 +1,17 @@
 <script>
-import CardsApp from './CardsApp.vue'
+import CardsApp from './CardsApp.vue';
+import SearchbarApp from './SearchbarApp.vue';
 // import store managment 
-import { store } from '../store.js'
+import { store } from '../store.js';
 // import axios
 import axios from 'axios';
+
 
 export default {
     name: 'CardListApp',
     components: {
-        CardsApp
+        CardsApp,
+        SearchbarApp
     },
     data() {
         return {
@@ -17,16 +20,27 @@ export default {
     },
     methods: {
         getCards() {
-            axios.get(store.apiUrl).then(res => {
+            let endPoint = store.apiUrl;
+
+            if (store.archetypeActive !== 'none') {
+                endPoint += `&archetype=${store.archetypeActive}`
+            }
+            axios.get(endPoint).then(res => {
                 console.log(res.data.data);
                 store.cardList = res.data.data;
 
             })
-
+        },
+        getArchetype() {
+            axios.get(store.apiUrlArchetype).then(res => {
+                console.log(res.data)
+                store.archetypeList = res.data;
+            })
         }
     },
     created() {
         this.getCards();
+        this.getArchetype();
     },
 }
 </script>
@@ -35,10 +49,10 @@ export default {
     <main>
         <div class="container">
             <!-- componente searchbar da aggiungere in futuro -->
-            afawfaf
+            <SearchbarApp @selectArchetype="getCards"/>
             <!-- card list -->
             <div class="bg-white">
-                <div class="cards-found">Trovate tot carte</div>
+                <div class="cards-found">Trovate {{store.cardList.length}} carte</div>
 
                 <div class="cards-container">
                     <!-- componente CardsApp da aggiungere -->
